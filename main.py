@@ -1,16 +1,16 @@
 import csv
 
 def makedata():
-    with open('/Users/HyogeunKim/PycharmProjects/lotto/numbers.txt', 'rt') as f:
+    with open('/Users/HyogeunKim/PycharmProjects/lotto/lottos_615.csv', 'rt') as f:
         reader = csv.reader(f)
         result = []
 
         for row in reader:
             result.append(row)
-        result = list(set(result))
+
         return result
 
-"""
+
 def duplication(data1, data2):
     result = []
     count = 0
@@ -25,7 +25,7 @@ def duplication(data1, data2):
             else:
                 pass
     return count, result
-"""
+
 
 dics1value = makedata()
 dics2value = makedata()
