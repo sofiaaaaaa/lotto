@@ -1,33 +1,30 @@
 import csv
 
+# extract data from CSV file
 def makedata():
-    with open('/Users/HyogeunKim/PycharmProjects/lotto/lottos_615.csv', 'rt') as f:
-        reader = csv.reader(f)
-        result = []
+    with open('lottos_615.csv', 'rt') as f:
+        reader = csv.reader(f, delimiter=',')
+        orgindata = []
 
         for row in reader:
-            result.append(row)
+            orgindata.append(row)
 
+        result = sorted(orgindata)
         return result
 
+# extract duplication numbers
+def dupcheck(idata):
+    dupresult = []
 
-def duplication(data1, data2):
-    result = []
-    count = 0
-    sortedata1 = sorted(data1)
-    sortedata2 = sorted(data2)
-
-    for datum1 in sortedata1:
-        for datum2 in sortedata2:
-            if datum1 == datum2:
-                result.append(datum1)
-                count += 1
+    for i in range(len(idata)):
+        for y in range(len(idata)):
+            if idata[i] == idata[y]:
+                dupresult.append(idata[i])
             else:
                 pass
-    return count, result
 
+    return dupresult
 
-dics1value = makedata()
-dics2value = makedata()
-
-print(dics1value)
+data = makedata()
+result = dupcheck(data)
+print(result)
